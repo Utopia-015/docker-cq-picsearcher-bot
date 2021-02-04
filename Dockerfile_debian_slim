@@ -1,0 +1,24 @@
+FROM debian:buster-slim
+
+SHELL ["/bin/bash", "-ex"]
+
+RUN tools="curl software-properties-common git vim screen" buildDeps="make build-essential pkg-config" \
+    && echo 'deb http://ftp.us.debian.org/debian buster main' > /etc/apt/sources.list \
+    && apt-get update \
+    && apt-get install -y ${tools} ${buildDeps} \
+    && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
+    && apt-get install -y nodejs \
+    && cd ~ \
+    && mkdir gocq/ \
+    && mkdir gocq_release/ && cd gocq_release/ \
+    && curl -OL https://github.com/Mrs4s/go-cqhttp/releases/download/v0.9.39-fix1/go-cqhttp-v0.9.39-fix1-linux-amd64.tar.gz \
+    && tar -xzf $(ls) -C ../gocq/ \
+    && cd .. \
+    && git clone https://github.com/Tsuk1ko/cq-picsearcher-bot.git \
+    && cd cq-picsearcher-bot \
+    && cp config.default.jsonc config.jsonc \
+    && npm i -g yarn \
+    && yarn \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get purge -y --auto-remove ${buildDeps} \
+    && apt-get clean
