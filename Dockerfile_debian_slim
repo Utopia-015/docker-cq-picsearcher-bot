@@ -11,8 +11,9 @@ RUN tools="curl software-properties-common git vim screen" buildDeps="make build
     && cd ~ \
     && mkdir gocq/ \
     && mkdir gocq_release/ && cd gocq_release/ \
-    && curl -OL https://github.com/Mrs4s/go-cqhttp/releases/download/v0.9.39-fix1/go-cqhttp-v0.9.39-fix1-linux-amd64.tar.gz \
+    && curl -OL https://github.com/Mrs4s/go-cqhttp/releases/download/v0.9.40/go-cqhttp-v0.9.40-linux-amd64.tar.gz \
     && tar -xzf $(ls) -C ../gocq/ \
+    && rm * \
     && cd .. \
     && git clone https://github.com/Tsuk1ko/cq-picsearcher-bot.git \
     && cd cq-picsearcher-bot \
