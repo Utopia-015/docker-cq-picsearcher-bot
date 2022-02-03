@@ -6,7 +6,7 @@
    Example: 
    
       $ docker pull utopia015/cqpicbot:latest-slim
-      $ docker run -itd -p 5700:5700 -p 6700:6700 utopia015/cqpicbot:latest-slim bash
+      $ docker run -itd utopia015/cqpicbot:latest-slim bash
    
 ### Description
    
