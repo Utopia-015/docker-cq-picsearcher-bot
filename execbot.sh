@@ -2,7 +2,7 @@
 pgrep node > /dev/null
 if [ $? -ne 0 ]
 then 
-	cd /root/gocq
+  cd /root/gocq
   ./go-cqhttp faststart > ./logs/mylog.log 2>&1 &
   sleep 3
   cd /root/cq-picsearcher-bot
@@ -10,5 +10,5 @@ then
 else
   cd /root/cq-picsearcher-bot
   npm stop
-	pkill go-cqhttp
+  pkill go-cqhttp
 fi
